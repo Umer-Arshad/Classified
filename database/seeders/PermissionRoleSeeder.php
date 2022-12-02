@@ -53,11 +53,11 @@ class PermissionRoleSeeder extends Seeder
         ]);
         PermissionRole::create([
             'permission_id'=>10,
-            'user_role_id'=>4
+            'user_role_id'=>3
         ]);
         PermissionRole::create([
             'permission_id'=>11,
-            'user_role_id'=>4
+            'user_role_id'=>3
         ]);
     }
 }

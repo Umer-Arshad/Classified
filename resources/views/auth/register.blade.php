@@ -129,7 +129,7 @@ background-position: right .75rem center; background-size: 16px 12px; border: 1p
 background-position: right .75rem center; background-size: 16px 12px; border: 1px solid #ced4da ; border-radius: .25rem;
 -webkit-appearance: none; -moz-appearance: none ; appearance: none" aria-label="User Role">
                                         @if(count($user_role))
-                                            <option disabled selected value>Role</option>
+                                            <option disabled selected value>User Position</option>
                                             @foreach($user_role as $user_role)
 
                                                 <option value="{{$user_role->id}}">{{$user_role->display_name}}</option>

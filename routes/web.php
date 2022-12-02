@@ -72,6 +72,13 @@ use App\Http\Controllers\ChangePassword;
 Route::get('/login', [LoginController::class, 'show'])->middleware('adminLoginCheck')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('adminLoginCheck')->name('login.perform');
 
+//Super Admin Profile Routes
+Route::get('/edit_profile', [UserManagementController::class, 'edit_profile'])->middleware('adminLoginCheck')->name('edit_profile');
+//Route::get('/update_profile', [UserManagementController::class, 'update_profile'])->middleware('adminLoginCheck')->name('update_profile');
+
+Route::post('update-password/{id}', [UserManagementController::class, 'update_profile'])->middleware('adminLoginCheck')->name('update-password');
+
+
 //User Management
 Route::get('/user_record', [UserManagementController::class, 'user_record'])->middleware('adminLoginCheck')->name('user_record');
 Route::get('/update_user_status', [UserManagementController::class, 'update_user_status'])->middleware('adminLoginCheck')->name('update_user_status');

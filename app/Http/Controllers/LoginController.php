@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
 
@@ -21,14 +24,20 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-//        $input = $request->all();
+
+
+        $input = $request->all();
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'min:8|max:9|required',
         ]);
 
-//        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (Auth::attempt($credentials, $request->remember)) {
+
+
+
+
+
+       if (Auth::attempt($credentials)) {
             if (auth()->user()->user_role_id == 1) {
                 return redirect()->route('home');
             }
@@ -38,9 +47,7 @@ class LoginController extends Controller
             elseif (auth()->user()->user_role_id == 3) {
                 return redirect()->route('customer_dashboard');
             }
-            elseif (auth()->user()->user_role_id == 4) {
-                return redirect()->route('visitor_dashboard');
-            } else{
+           else{
                 return 'Wrong input';
             }
         }

@@ -23,7 +23,7 @@ class UserRoleSeeder extends Seeder
         ]);
         UserRole::create([
             'name'=>'Advertiser',
-            'display_name'=>'Advertiser',
+            'display_name'=>'Supplier',
             'status'=>1
         ]);
         UserRole::create([
@@ -31,10 +31,6 @@ class UserRoleSeeder extends Seeder
             'display_name'=>'Customer',
             'status'=>1
         ]);
-        UserRole::create([
-            'name'=>'Visitor',
-            'display_name'=>'Visitor',
-            'status'=>1
-        ]);
+
     }
 }

@@ -12,11 +12,84 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rule;
 
 
 class UserManagementController extends Controller
 {
     //
+
+    //Super Admin Update Password
+
+    public function edit_profile(){
+        $user = Auth()->user()->id;
+
+       return view('SuperAdmin.Profile.EditProfile',compact('user'));
+    }
+    public function update_profile(Request $request){
+
+//           $id=Auth()->user()->id;
+            $request->validate(
+                [
+                    "password" => "required|confirmed|min:8",
+                ]
+            );
+
+            $id = Auth()->user()->id;
+            $user=User::find($id);
+
+            $user->password=Hash::make($request->password);
+//           return $user->password;
+            $user->update();
+
+            if($user)
+                Session::flash('success-toast', 'Password has been Updated.');
+            else
+                Session::flash('error-toast', 'Password has not been Updated.');
+
+            return back();
+
+
+
+
+
+
+
+
+
+//        $users = $request->validate([
+//            'username' => ['required','max:255', 'min:2'],
+//            'firstname' => ['max:100'],
+//            'lastname' => ['max:100'],
+//            'email' => ['required', 'email', 'max:255',  Rule::unique('users')->ignore(auth()->user()->id),],
+//            'address' => ['max:100'],
+//            'city' => ['max:100'],
+//            'country' => ['max:100'],
+//            'postal' => ['max:100'],
+//            'about' => ['max:255']
+//        ]);
+//
+//        auth()->user()->update([
+//            'username' => $request->get('username'),
+//            'firstname' => $request->get('firstname'),
+//            'lastname' => $request->get('lastname'),
+//            'email' => $request->get('email') ,
+//            'address' => $request->get('address'),
+//            'city' => $request->get('city'),
+//            'country' => $request->get('country'),
+//            'postal' => $request->get('postal'),
+//            'about' => $request->get('about')
+//        ]);
+    }
+
+
+
+
+
+
+
     public function advertiser(){
         $user=User::where('id','<>',Auth()->user()->id)->where('user_role_id',2)->get();
 

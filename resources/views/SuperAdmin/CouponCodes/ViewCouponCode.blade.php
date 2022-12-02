@@ -26,6 +26,9 @@
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Condition</th>
+                                    <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Action</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                                 </thead>
@@ -42,7 +45,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="text-xs font-weight-bold mb-0">{{ $coupon_code->type == 1 ? 'Fixed' : 'Percentage' }}</p>
+                                        <p class="text-sm font-weight-bold mb-0">{{ $coupon_code->type == 1 ? 'Fixed' : 'Percentage' }}</p>
 
                                     </td>
                                     <td class="align-middle text-center text-sm">
@@ -56,18 +59,23 @@
                                     </td>
                                     <td class="align-middle text-center">
                                         @if(($coupon_code->condition==1))
-                                            {{'Single User'}}
+                                            <h6 class="mb-0 text-sm">{{'Single User'}}</h6>
+
                                         @elseif($coupon_code->condition==2)
-                                            {{'Customer'}}
+                                            <h6 class="mb-0 text-sm">{{'Customer'}}</h6>
+
                                         @elseif($coupon_code->condition==3)
-                                            {{'New User'}}
+                                            <h6 class="mb-0 text-sm">{{'New User'}}</h6>
+
                                         @elseif($coupon_code->condition==4)
-                                            {{'Visitor'}}
+                                            <h6 class="mb-0 text-sm">{{'Visitor'}}</h6>
+
                                         @else
-                                            {{'Advertiser'}}
+                                            <h6 class="mb-0 text-sm">{{'Advertiser'}}</h6>
+
                                         @endif
                                     </td>
-                                    <td class="align-middle">
+                                    <td class="align-middle text-center text-end">
                                         <a   href="{{route('edit_coupon_code',$coupon_code->id)}}">
                                             <i class="fa-solid fa-pen-to-square text-success mx-1"></i>
                                             {{--                                                <p class="text-sm font-weight-bold mb-0 ps-2">Edit</p>--}}

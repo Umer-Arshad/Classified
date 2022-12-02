@@ -22,6 +22,7 @@
                                         <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Coupon Name</label>
                                             <input class="form-control" name="coupon_name" type="text" >
+                                            @error('coupon_name') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -35,7 +36,7 @@ background-position: right .75rem center; background-size: 16px 12px; border: 1p
                                                 <option value="1">Fixed</option>
                                                 <option value="2">Percentage</option>
                                             </select>
-
+                                            @error('type') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                                         </div>
                                     </div>
                                 </div>
@@ -54,6 +55,7 @@ background-position: right .75rem center; background-size: 16px 12px; border: 1p
                                                 <option value="4">Visitor</option>
                                                 <option value="5">Advertiser</option>
                                             </select>
+                                            @error('condition') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -61,6 +63,7 @@ background-position: right .75rem center; background-size: 16px 12px; border: 1p
                                             <label for="example-text-input" class="form-control-label">Status</label>
                                             <input type="checkbox"  name="status" >
                                         </div>
+                                        @error('status') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                                     </div>
                                 </div>
                                 <div class="card-footer">
